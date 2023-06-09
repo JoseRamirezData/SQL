@@ -1,0 +1,59 @@
+--GROUP BY
+
+SELECT customer_id FROM payment
+GROUP BY customer_id
+ORDER BY customer_id
+
+SELECT customer_id, SUM(amount)FROM payment
+GROUP BY customer_id
+ORDER BY SUM(amount) DESC
+
+SELECT customer_id, COUNT(amount)FROM payment
+GROUP BY customer_id
+ORDER BY COUNT(amount) DESC
+
+SELECT * FROM payment
+
+SELECT customer_id, staff_id, SUM(amount) FROM payment
+GROUP BY staff_id, customer_id
+ORDER BY customer_id
+
+SELECT staff_id, customer_id,  SUM(amount) FROM payment
+GROUP BY staff_id, customer_id
+ORDER BY staff_id, customer_id
+
+SELECT staff_id, customer_id,  SUM(amount) FROM payment
+GROUP BY staff_id, customer_id
+ORDER BY SUM(amount)
+
+--TIME Stamp
+SELECT DATE(payment_date), SUM(amount) FROM payment
+GROUP BY DATE(payment_date)
+ORDER BY SUM(amount) DESC
+
+--CHALLENGE GROUP BY
+--1
+SELECT * FROM payment
+LIMIT 1
+
+SELECT staff_id, COUNT(amount) FROM payment
+GROUP BY staff_id
+ORDER BY staff_id DESC
+
+--2
+SELECT * FROM film
+
+SELECT rating, ROUND(AVG(replacement_cost),2) FROM film
+GROUP BY rating
+ORDER BY AVG(replacement_cost) DESC
+
+--3
+SELECT customer_id, SUM(amount) FROM payment
+GROUP BY customer_id
+ORDER BY SUM(amount) DESC
+LIMIT 5
+
+
+
+
+

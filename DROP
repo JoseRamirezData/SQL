@@ -1,0 +1,11 @@
+--DROP
+
+SELECT * FROM new_info
+
+--Delete column
+ALTER TABLE new_info
+DROP COLUMN people
+
+--Avoid error
+ALTER TABLE new_info
+DROP COLUMN IF EXISTS people

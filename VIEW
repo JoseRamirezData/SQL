@@ -1,0 +1,39 @@
+--View
+--store a query
+
+SELECT * FROM customer
+
+SELECT first_name, last_name, address FROM customer
+INNER JOIN address
+ON customer.address_id = address.address_id
+
+--store query as view
+
+CREATE VIEW customer_info AS
+SELECT first_name, last_name, address FROM customer
+INNER JOIN address
+ON customer.address_id = address.address_id
+
+--Call a view
+
+SELECT * FROM customer_info
+
+
+--Edit a view
+
+CREATE OR REPLACE VIEW customer_info AS 
+SELECT first_name, last_name, address, district FROM customer
+INNER JOIN address
+ON customer.address_id = address.address_id
+
+SELECT * FROM customer_info
+
+--Remove View
+DROP VIEW IF EXISTS customer_info
+
+--Change name of view
+ALTER VIEW customer_info RENAME TO c_info 
+
+SELECT * FROM c_info
+
+DROP VIEW c_info

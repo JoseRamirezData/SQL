@@ -1,0 +1,79 @@
+--Timestamp
+--TIME - Constaint only time
+---DATE - only date
+--TIMESTAMP - date and time 
+--TIMESTAMPTZ - date, time and timezone
+--TIMEZONE
+--NOW
+--TIMEOFDAY
+--CURRENT_TIME
+--CURRENT_DATE
+
+SHOW ALL
+
+SHOW TIMEZONE
+
+SELECT NOW()
+
+SELECT TIMEOFDAY()
+
+SELECT CURRENT_TIME
+
+SELECT CURRENT_DATE
+
+--EXTRACT()   YEAR MONTH DAY WEEK QUARTER
+--AGE()
+--TO_CHAR()
+
+--EXTRACT(YEAR FROM date_col)
+--AGE(date_col)
+--TO_CHAR(date_col, 'mm-dd-yyyy')
+
+SELECT * FROM payment
+
+SELECT EXTRACT(YEAR FROM payment_date) AS payyear
+FROM payment
+
+
+SELECT EXTRACT(MONTH FROM payment_date) AS paymonth
+FROM payment
+
+SELECT EXTRACT(QUARTER FROM payment_date) AS payquarter
+FROM payment
+
+SELECT AGE (payment_date)
+FROM payment
+
+--help find> Data type Formatting Functions https://www.postgresql.org/docs/12/functions-formatting.html
+
+SELECT TO_CHAR (payment_date, 'MONTH-YYYY')
+FROM payment
+
+SELECT TO_CHAR (payment_date, 'MONTH   YYYY')
+FROM payment
+
+SELECT TO_CHAR (payment_date, 'mm-dd-yyyy')
+FROM payment
+
+--Challenge tasks TIMESTAMPS and EXTRACT
+--1
+SELECT TO_CHAR(payment_date, 'MONTH') AS payment_month
+FROM payment
+GROUP BY payment_month
+
+SELECT DISTINCT(TO_CHAR(payment_date, 'MONTH')) AS payment_month
+FROM payment
+
+--2
+SELECT COUNT(TO_CHAR(payment_date, 'DAY')) AS payment_month
+FROM payment
+WHERE TO_CHAR(payment_date, 'DAY') LIKE 'MONDAY%'
+--EXTRACT DAY has empty spaces at the end
+
+--Option2
+SELECT COUNT (*)
+FROM payment
+WHERE EXTRACT (dow FROM payment_date)=1
+
+
+

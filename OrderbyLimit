@@ -1,0 +1,36 @@
+--Order by
+
+SELECT store_id, first_name, last_name From customer
+ORDER BY store_id DESC, first_name ASC
+;
+
+--Limit
+SELECT * from payment
+WHERE amount != 0
+ORDER BY payment_date DESC
+LIMIT 5
+
+SELECT * from payment
+LIMIT 1
+
+--Challenge
+SELECT customer_id from payment
+WHERE amount > 0
+ORDER BY payment_date ASC
+LIMIT 10;
+
+
+SELECT * from film
+LIMIT 1
+
+
+SELECT title,length FROM film
+ORDER BY (length) ASC
+LIMIT 5;
+
+SELECT  count (title) FROM film
+ WHERE length <= 50
+
+
+
+

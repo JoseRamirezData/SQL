@@ -1,0 +1,5 @@
+SELECT COUNT (DISTINCT customer_id) FROM customer;
+
+SELECT COUNT (DISTINCT amount) FROM payment;
+
+SELECT * FROM payment;

@@ -1,0 +1,6 @@
+--COALESCE
+--useful when table cointains NULL values and substituting it with another value
+
+SELECT item, (price-COALESCE(discount,0))
+AS final FROM table
+

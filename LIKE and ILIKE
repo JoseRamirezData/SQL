@@ -1,0 +1,36 @@
+--LIKE and ILIKE  pattern A%, %a
+--Like< case sensitive(si afecta mayuscualas), ILIKE <not case sensitive(no afecta mayusculas)
+-- _ underscore> replace a single character ex Version#_
+
+-- LIKE '_her%' Theressa
+
+SELECT * FROM customer
+WHERE first_name LIKE 'J%'
+
+SELECT COUNT (*) FROM customer
+WHERE first_name LIKE 'J%'
+
+SELECT * FROM customer
+WHERE first_name LIKE 'J%' AND last_name LIKE 'S%'
+
+SELECT * FROM customer
+WHERE first_name LIKE 'J%' AND last_name ILIKE '%S'
+
+
+SELECT * FROM customer
+WHERE first_name LIKE '%her%' 
+
+SELECT * FROM customer
+WHERE first_name LIKE '_her%' 
+
+
+SELECT * FROM customer
+WHERE first_name LIKE 'A%' 
+ORDER BY last_name
+
+SELECT * FROM customer
+WHERE first_name LIKE 'A%' AND last_name NOT LIKE 'B%'
+ORDER BY last_name
+
+
+

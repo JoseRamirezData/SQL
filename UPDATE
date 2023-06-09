@@ -1,0 +1,24 @@
+SELECT * FROM account
+
+--UPDATE
+--Update last login null
+
+UPDATE account
+SET last_login = CURRENT_TIMESTAMP
+
+--Change time last login with time created
+UPDATE account
+SET last_login = created_on
+
+--Update with 2 tables
+SELECT * FROM account_job
+
+UPDATE account_job
+SET hire_date = account.created_on
+FROM account
+WHERE account_job.user_id = account.user_id
+
+--RETURNNG > return affected rows
+UPDATE account
+SET last_login = CURRENT_TIMESTAMP
+RETURNING email, created_on, last_login

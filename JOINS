@@ -1,0 +1,96 @@
+--JOINS 
+--https://en.wikipedia.org/wiki/Join_(SQL)
+--http://www.sql-join.com/
+--https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/
+
+--AS
+SELECT amount as rentalPrice FROM payment
+
+SELECT COUNT (amount) AS num_transactions
+FROM payment
+
+SELECT customer_id, SUM(amount) AS total_spent
+FROM payment
+GROUP BY customer_id
+HAVING SUM(amount) > 100
+
+SELECT customer_id, amount AS new_name
+FROM payment
+WHERE amount > 2
+
+--INNER JOIN
+SELECT * FROM payment
+INNER JOIN customer
+ON payment.customer_id = customer.customer_id
+
+
+SELECT payment_id, payment.customer_id, first_name FROM payment
+INNER JOIN customer
+ON payment.customer_id = customer.customer_id
+
+--FULL OUTER JOIN
+SELECT * FROM customer
+FULL OUTER JOIN payment
+ON customer.customer_id = payment.customer_id
+
+--INNER JOIN
+SELECT * FROM payment
+INNER JOIN customer
+ON payment.customer_id = customer.customer_id
+WHERE customer.customer_id IS null 
+OR payment.payment_id IS null
+
+SELECT COUNT (DISTINCT customer_id) FROM payment
+
+SELECT COUNT (DISTINCT customer_id) FROM customer
+
+--LEFT OUTER JOIN
+SELECT * FROM film
+
+SELECT * FROM inventory
+
+SELECT film.film_id, film.title, inventory_id, store_id
+FROM film
+LEFT JOIN inventory 
+ON inventory.film_id = film.film_id
+
+--know is there inventory for the films
+SELECT film.film_id, film.title, inventory_id, store_id
+FROM film
+LEFT JOIN inventory 
+ON inventory.film_id = film.film_id
+WHERE inventory.film_id IS NULL
+
+--RIGHT JOIN
+--UNION
+
+--JOIN CHALLENGE TASKS
+--1
+SELECT * FROM address
+
+SELECT * FROM customer
+
+SELECT district, email FROM address
+INNER JOIN customer
+ON address.address_id =customer.address_id
+WHERE district = 'California'
+
+--2
+SELECT * FROM film_actor
+
+SELECT * FROM film
+
+SELECT * FROM actor
+
+SELECT film_actor.actor_id, film_actor.film_id, film.title, actor.first_name, actor.last_name  
+FROM film_actor
+INNER JOIN film
+ON film_actor.film_id = film.film_id
+INNER JOIN actor
+ON film_actor.actor_id = actor.actor_id
+WHERE actor.first_name='Nick' AND actor.last_name='Wahlberg'
+
+
+
+
+

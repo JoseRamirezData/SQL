@@ -1,0 +1,20 @@
+--Aggregation Functions
+
+SELECT MIN(replacement_cost) FROM film;
+
+SELECT MAX(replacement_cost), MIN(replacement_cost) FROM film;
+
+SELECT COUNT(*) FROM film;
+
+SELECT ROUND(AVG(replacement_cost),2) FROM film;
+
+SELECT SUM(replacement_cost) FROM film;
+
+--GROUP BY
+--Use after FROM or WHERE
+--columns must appears in SELECT and GROUP BY
+
+SELECT * FROM payment
+
+
+
